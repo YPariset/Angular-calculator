@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <title>Angular calculator</title>
+    <script src=
+    "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+    </script>
+</head>
+<body ng-app="calc" ng-controller="calcMain">
+    <div class="container-full">
+        <div class="result-container">
+            {{firstVal || 0 }}
+            <span ng-if="currentModifier">{{currentModifier}}</span>
+            <span ng-if="secondVal">{{ secondVal }}</span>
+            <span ng-if="result" class="result-item"> = {{ result }}</span>
+        </div>
+        <div class="alter-container">
+            <div class="count-number">
+              <button class="number-list" ng-click="clearNumbers()">C</button>
+                <div class="count-number-in" ng-repeat="num in countArr">
+                    <button class="number-list" ng-click="numberDisplay(num)">{{ num }}</button>
+                    <button class="number-list" ng-if="$index == 9" ng-click="numberDisplay('.')"> . </button>
+                
+                </div>
+            </div>
+            <div class="modify-container">
+                <button class="modify-val" ng-repeat="mod in myValues" ng-click="createSecondValue(mod)">{{ mod }}</button>
+            </div>
+        </div>
+        <button class="result-btn" ng-click="doMath()">=</button>
+    </div>
+</body>
+</html>
